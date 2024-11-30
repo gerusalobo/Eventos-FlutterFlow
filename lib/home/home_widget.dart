@@ -5,6 +5,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'home_model.dart';
 export 'home_model.dart';
 
@@ -55,7 +57,7 @@ class _HomeWidgetState extends State<HomeWidget> {
         drawer: Drawer(
           elevation: 16.0,
           child: Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: EdgeInsets.all(10.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
@@ -63,7 +65,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                   width: 200.0,
                   height: 200.0,
                   clipBehavior: Clip.antiAlias,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     shape: BoxShape.circle,
                   ),
                   child: Image.network(
@@ -92,9 +94,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                   options: FFButtonOptions(
                     height: 40.0,
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     iconPadding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                     color: FlutterFlowTheme.of(context).primary,
                     textStyle: FlutterFlowTheme.of(context).titleSmall.override(
                           fontFamily: 'Inter',
@@ -105,7 +107,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
-              ].divide(const SizedBox(height: 10.0)),
+              ].divide(SizedBox(height: 10.0)),
             ),
           ),
         ),
@@ -121,14 +123,14 @@ class _HomeWidgetState extends State<HomeWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 2.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(5.0, 5.0),
+            alignment: AlignmentDirectional(5.0, 5.0),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -162,7 +164,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                           final listViewEventsRecord =
                               listViewEventsRecordList[listViewIndex];
                           return Padding(
-                            padding: const EdgeInsets.all(15.0),
+                            padding: EdgeInsets.all(15.0),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -193,17 +195,17 @@ class _HomeWidgetState extends State<HomeWidget> {
                                 child: Stack(
                                   children: [
                                     Align(
-                                      alignment: const AlignmentDirectional(0.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Padding(
-                                        padding: const EdgeInsets.all(5.0),
+                                        padding: EdgeInsets.all(5.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Align(
-                                              alignment: const AlignmentDirectional(
+                                              alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Padding(
-                                                padding: const EdgeInsets.all(5.0),
+                                                padding: EdgeInsets.all(5.0),
                                                 child: Text(
                                                   listViewEventsRecord.name,
                                                   style: FlutterFlowTheme.of(
@@ -220,7 +222,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding: const EdgeInsets.all(5.0),
+                                              padding: EdgeInsets.all(5.0),
                                               child: ClipRRect(
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
@@ -247,7 +249,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsets.all(5.0),
+                                                        EdgeInsets.all(5.0),
                                                     child: Text(
                                                       listViewEventsRecord.data,
                                                       style: FlutterFlowTheme
@@ -263,7 +265,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsets.all(5.0),
+                                                        EdgeInsets.all(5.0),
                                                     child: Text(
                                                       listViewEventsRecord
                                                           .local,
@@ -285,7 +287,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                                     ),
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(0.98, -1.01),
+                                          AlignmentDirectional(0.98, -1.01),
                                       child: InkWell(
                                         splashColor: Colors.transparent,
                                         focusColor: Colors.transparent,
@@ -298,9 +300,9 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                     builder:
                                                         (alertDialogContext) {
                                                       return AlertDialog(
-                                                        title: const Text(
+                                                        title: Text(
                                                             'Remover Evento'),
-                                                        content: const Text(
+                                                        content: Text(
                                                             'Deseja remover o evento?'),
                                                         actions: [
                                                           TextButton(
@@ -309,14 +311,14 @@ class _HomeWidgetState extends State<HomeWidget> {
                                                                     alertDialogContext,
                                                                     false),
                                                             child:
-                                                                const Text('Cancela'),
+                                                                Text('Cancela'),
                                                           ),
                                                           TextButton(
                                                             onPressed: () =>
                                                                 Navigator.pop(
                                                                     alertDialogContext,
                                                                     true),
-                                                            child: const Text(
+                                                            child: Text(
                                                                 'Confirma'),
                                                           ),
                                                         ],
@@ -346,7 +348,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                       );
                     },
                   ),
-                ].divide(const SizedBox(height: 5.0)),
+                ].divide(SizedBox(height: 5.0)),
               ),
             ),
           ),

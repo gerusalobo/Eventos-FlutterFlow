@@ -1,9 +1,13 @@
+import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'event_model.dart';
 export 'event_model.dart';
 
@@ -30,19 +34,19 @@ class _EventWidgetState extends State<EventWidget> {
     _model = createModel(context, () => EventModel());
 
     _model.txtNameTextController ??=
-        TextEditingController(text: widget.umEvento?.name);
+        TextEditingController(text: widget!.umEvento?.name);
     _model.txtNameFocusNode ??= FocusNode();
 
     _model.urlImageTextController ??=
-        TextEditingController(text: widget.umEvento?.imageUrl);
+        TextEditingController(text: widget!.umEvento?.imageUrl);
     _model.urlImageFocusNode ??= FocusNode();
 
     _model.txtLocalTextController ??=
-        TextEditingController(text: widget.umEvento?.local);
+        TextEditingController(text: widget!.umEvento?.local);
     _model.txtLocalFocusNode ??= FocusNode();
 
     _model.txtDataTextController ??=
-        TextEditingController(text: widget.umEvento?.data);
+        TextEditingController(text: widget!.umEvento?.data);
     _model.txtDataFocusNode ??= FocusNode();
   }
 
@@ -68,7 +72,7 @@ class _EventWidgetState extends State<EventWidget> {
             borderRadius: 30.0,
             borderWidth: 1.0,
             buttonSize: 60.0,
-            icon: const Icon(
+            icon: Icon(
               Icons.arrow_back_rounded,
               color: Colors.white,
               size: 30.0,
@@ -78,7 +82,7 @@ class _EventWidgetState extends State<EventWidget> {
             },
           ),
           title: Text(
-            widget.umEvento != null ? 'Atualizar' : 'Novo Evento',
+            widget!.umEvento != null ? 'Atualizar' : 'Novo Evento',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Readex Pro',
                   color: Colors.white,
@@ -86,7 +90,7 @@ class _EventWidgetState extends State<EventWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: true,
           elevation: 2.0,
         ),
@@ -104,8 +108,8 @@ class _EventWidgetState extends State<EventWidget> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: SizedBox(
+                      padding: EdgeInsets.all(15.0),
+                      child: Container(
                         width: 400.0,
                         child: TextFormField(
                           controller: _model.txtNameTextController,
@@ -129,14 +133,14 @@ class _EventWidgetState extends State<EventWidget> {
                                   letterSpacing: 0.0,
                                 ),
                             enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
@@ -172,8 +176,8 @@ class _EventWidgetState extends State<EventWidget> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: SizedBox(
+                      padding: EdgeInsets.all(15.0),
+                      child: Container(
                         width: 400.0,
                         child: TextFormField(
                           controller: _model.urlImageTextController,
@@ -197,14 +201,14 @@ class _EventWidgetState extends State<EventWidget> {
                                   letterSpacing: 0.0,
                                 ),
                             enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
@@ -249,8 +253,8 @@ class _EventWidgetState extends State<EventWidget> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: SizedBox(
+                      padding: EdgeInsets.all(15.0),
+                      child: Container(
                         width: 400.0,
                         child: TextFormField(
                           controller: _model.txtLocalTextController,
@@ -274,14 +278,14 @@ class _EventWidgetState extends State<EventWidget> {
                                   letterSpacing: 0.0,
                                 ),
                             enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
@@ -317,8 +321,8 @@ class _EventWidgetState extends State<EventWidget> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(15.0),
-                      child: SizedBox(
+                      padding: EdgeInsets.all(15.0),
+                      child: Container(
                         width: 400.0,
                         child: TextFormField(
                           controller: _model.txtDataTextController,
@@ -342,14 +346,14 @@ class _EventWidgetState extends State<EventWidget> {
                                   letterSpacing: 0.0,
                                 ),
                             enabledBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
                               borderRadius: BorderRadius.circular(8.0),
                             ),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Color(0x00000000),
                                 width: 1.0,
                               ),
@@ -387,8 +391,8 @@ class _EventWidgetState extends State<EventWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        if (widget.umEvento != null) {
-                          await widget.umEvento!.reference
+                        if (widget!.umEvento != null) {
+                          await widget!.umEvento!.reference
                               .update(createEventsRecordData(
                             name: _model.txtNameTextController.text,
                             image: _model.urlImageTextController.text,
@@ -419,10 +423,10 @@ class _EventWidgetState extends State<EventWidget> {
                       text: 'Salvar',
                       options: FFButtonOptions(
                         height: 40.0,
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 0.0, 16.0, 0.0),
                         iconPadding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
                         color: FlutterFlowTheme.of(context).primary,
                         textStyle:
                             FlutterFlowTheme.of(context).titleSmall.override(
