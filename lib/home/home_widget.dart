@@ -39,10 +39,7 @@ class _HomeWidgetState extends State<HomeWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: colorFromCssString(
-          (Theme.of(context).brightness == Brightness.dark).toString(),
-          defaultColor: Colors.black,
-        ),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         floatingActionButton: FloatingActionButton(
           onPressed: () async {
             context.pushNamed('Event');
@@ -173,7 +170,7 @@ class _HomeWidgetState extends State<HomeWidget> {
                               highlightColor: Colors.transparent,
                               onLongPress: () async {
                                 context.pushNamed(
-                                  'Atualizar',
+                                  'Event',
                                   queryParameters: {
                                     'umEvento': serializeParam(
                                       listViewEventsRecord,

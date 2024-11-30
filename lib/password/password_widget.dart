@@ -39,10 +39,7 @@ class _PasswordWidgetState extends State<PasswordWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: colorFromCssString(
-        (Theme.of(context).brightness == Brightness.dark).toString(),
-        defaultColor: Colors.black,
-      ),
+      backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
       appBar: AppBar(
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         automaticallyImplyLeading: false,

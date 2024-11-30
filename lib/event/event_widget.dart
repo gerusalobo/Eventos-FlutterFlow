@@ -29,16 +29,20 @@ class _EventWidgetState extends State<EventWidget> {
     super.initState();
     _model = createModel(context, () => EventModel());
 
-    _model.txtNameTextController ??= TextEditingController();
+    _model.txtNameTextController ??=
+        TextEditingController(text: widget.umEvento?.name);
     _model.txtNameFocusNode ??= FocusNode();
 
-    _model.urlImageTextController ??= TextEditingController();
+    _model.urlImageTextController ??=
+        TextEditingController(text: widget.umEvento?.imageUrl);
     _model.urlImageFocusNode ??= FocusNode();
 
-    _model.txtLocalTextController ??= TextEditingController();
+    _model.txtLocalTextController ??=
+        TextEditingController(text: widget.umEvento?.local);
     _model.txtLocalFocusNode ??= FocusNode();
 
-    _model.txtDataTextController ??= TextEditingController();
+    _model.txtDataTextController ??=
+        TextEditingController(text: widget.umEvento?.data);
     _model.txtDataFocusNode ??= FocusNode();
   }
 
@@ -55,10 +59,7 @@ class _EventWidgetState extends State<EventWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: colorFromCssString(
-          (Theme.of(context).brightness == Brightness.dark).toString(),
-          defaultColor: Colors.black,
-        ),
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).primary,
           automaticallyImplyLeading: false,
@@ -77,7 +78,7 @@ class _EventWidgetState extends State<EventWidget> {
             },
           ),
           title: Text(
-            'Novo Evento',
+            widget.umEvento != null ? 'Atualizar' : 'Novo Evento',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Readex Pro',
                   color: Colors.white,
@@ -238,6 +239,15 @@ class _EventWidgetState extends State<EventWidget> {
                         ),
                       ),
                     ),
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: Image.network(
+                        _model.urlImageTextController.text,
+                        width: 200.0,
+                        height: 200.0,
+                        fit: BoxFit.contain,
+                      ),
+                    ),
                     Padding(
                       padding: const EdgeInsets.all(15.0),
                       child: SizedBox(
@@ -377,14 +387,27 @@ class _EventWidgetState extends State<EventWidget> {
                     ),
                     FFButtonWidget(
                       onPressed: () async {
-                        await EventsRecord.collection
-                            .doc()
-                            .set(createEventsRecordData(
-                              name: _model.txtNameTextController.text,
-                              image: _model.urlImageTextController.text,
-                              local: _model.txtLocalTextController.text,
-                              data: _model.txtDataTextController.text,
-                            ));
+                        if (widget.umEvento != null) {
+                          await widget.umEvento!.reference
+                              .update(createEventsRecordData(
+                            name: _model.txtNameTextController.text,
+                            image: _model.urlImageTextController.text,
+                            local: _model.txtLocalTextController.text,
+                            imageUrl: _model.urlImageTextController.text,
+                            data: _model.txtDataTextController.text,
+                          ));
+                        } else {
+                          await EventsRecord.collection
+                              .doc()
+                              .set(createEventsRecordData(
+                                name: _model.txtNameTextController.text,
+                                image: _model.urlImageTextController.text,
+                                local: _model.txtLocalTextController.text,
+                                data: _model.txtLocalTextController.text,
+                                imageUrl: _model.urlImageTextController.text,
+                              ));
+                        }
+
                         safeSetState(() {
                           _model.txtNameTextController?.clear();
                           _model.urlImageTextController?.clear();

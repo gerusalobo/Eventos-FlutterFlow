@@ -108,32 +108,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'password',
           path: '/password',
           builder: (context, params) => const PasswordWidget(),
-        ),
-        FFRoute(
-          name: 'Atualizar',
-          path: '/atualizar',
-          asyncParams: {
-            'umEvento': getDoc(['Events'], EventsRecord.fromSnapshot),
-          },
-          builder: (context, params) => AtualizarWidget(
-            umEvento: params.getParam(
-              'umEvento',
-              ParamType.Document,
-            ),
-          ),
-        ),
-        FFRoute(
-          name: 'Imagem',
-          path: '/imagem',
-          asyncParams: {
-            'umEvento': getDoc(['Events'], EventsRecord.fromSnapshot),
-          },
-          builder: (context, params) => ImagemWidget(
-            umEvento: params.getParam(
-              'umEvento',
-              ParamType.Document,
-            ),
-          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -35,11 +35,17 @@ class EventsRecord extends FirestoreRecord {
   String get data => _data ?? '';
   bool hasData() => _data != null;
 
+  // "ImageUrl" field.
+  String? _imageUrl;
+  String get imageUrl => _imageUrl ?? '';
+  bool hasImageUrl() => _imageUrl != null;
+
   void _initializeFields() {
     _name = snapshotData['Name'] as String?;
     _image = snapshotData['Image'] as String?;
     _local = snapshotData['Local'] as String?;
     _data = snapshotData['Data'] as String?;
+    _imageUrl = snapshotData['ImageUrl'] as String?;
   }
 
   static CollectionReference get collection =>
@@ -80,6 +86,7 @@ Map<String, dynamic> createEventsRecordData({
   String? image,
   String? local,
   String? data,
+  String? imageUrl,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
@@ -87,6 +94,7 @@ Map<String, dynamic> createEventsRecordData({
       'Image': image,
       'Local': local,
       'Data': data,
+      'ImageUrl': imageUrl,
     }.withoutNulls,
   );
 
@@ -101,12 +109,13 @@ class EventsRecordDocumentEquality implements Equality<EventsRecord> {
     return e1?.name == e2?.name &&
         e1?.image == e2?.image &&
         e1?.local == e2?.local &&
-        e1?.data == e2?.data;
+        e1?.data == e2?.data &&
+        e1?.imageUrl == e2?.imageUrl;
   }
 
   @override
-  int hash(EventsRecord? e) =>
-      const ListEquality().hash([e?.name, e?.image, e?.local, e?.data]);
+  int hash(EventsRecord? e) => const ListEquality()
+      .hash([e?.name, e?.image, e?.local, e?.data, e?.imageUrl]);
 
   @override
   bool isValidKey(Object? o) => o is EventsRecord;
