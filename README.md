@@ -2,11 +2,19 @@
 
 App em Flutter para a Gestão de Eventos.
 
-Permitindo a vizualização, cadastro, alteração e  dos Eventos e Usuários.
+Permitindo a visualização, cadastro, alteração e  dos Eventos e Usuários.
 
 Usando a plataforma FlutterFlow com Banco Firebase.
 
 <img src="./img/image-20241201120902177.png" alt="image-20241201120902177" style="zoom:80%;" /> <img src="./img/image-20241201120923137.png" alt="image-20241201120923137" style="zoom:80%;" />
+
+
+
+Vídeo de Apresentação:
+
+
+
+
 
 ## Telas
 
@@ -67,8 +75,10 @@ A edição é feita pela ImagemUrl - string, e a exibição pela Image.
 
 - A autenticação Sign In é realizada com email/password, o password é armazenado como hash em banco e só pode ser trocado via link de reset enviado para o email do usuário.
 - Caso a pessoa não tenha conta, é possível criar uma conta de usuário através do Sign Up.
+
 - O acesso ao app precisa de autenticação.
 - Após a autenticação, abre a tela home.
+- Para deslogar clicar em sair na tela Home.
 
 
 
@@ -90,7 +100,10 @@ Funções básicas:
 #### Event
 
 - É a mesma tela para edição e criação de card, a diferença é se recebe ou não o objeto. 
+
 - Dependendo se tem ou não objeto o titulo muda de Novo Evento ou Atualizar.
+
+  ![image-20241201123545783](./img/image-20241201123545783.png)
 
 - Em caso de edição: os campos Name, url_imagem, Local e Data são preenchidos a partir do objeto Evento.
 
