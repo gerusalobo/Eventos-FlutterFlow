@@ -6,7 +6,7 @@ Permitindo a vizualização, cadastro, alteração e  dos Eventos e Usuários.
 
 Usando a plataforma FlutterFlow com Banco Firebase.
 
-<img src="./img/image-20241201120751426.png" alt="image-20241201120751426" style="zoom:80%;" /><img src="./img/image-20241201120902177.png" alt="image-20241201120902177" style="zoom:80%;" /> <img src="./img/image-20241201120923137.png" alt="image-20241201120923137" style="zoom:80%;" />
+<img src="./img/image-20241201120902177.png" alt="image-20241201120902177" style="zoom:80%;" /> <img src="./img/image-20241201120923137.png" alt="image-20241201120923137" style="zoom:80%;" />
 
 ## Telas
 
@@ -33,7 +33,7 @@ Foram criadas 4 telas principais:
 
 - Auth1 - tela para autenticação dos usuários e cadastro de usuários
 
-![image-20241201103738345](./img/image-20241201103738345.png)     ![image-20241201103828698](./../../../../../AppData/Roaming/Typora/typora-user-images/image-20241201103828698.png)
+![image-20241201103738345](./img/image-20241201103738345.png)     ![image-20241201103828698](./img/image-20241201103828698.png)
 
 - Password - Tela para reset de password
 
@@ -101,7 +101,7 @@ Funções básicas:
 - Ao clicar em ![image-20241201110948735](./img/image-20241201110948735.png)retorna para a tela home sem salvar.
 - Ao clicar em salvar, existe a lógica para criação ou atualização do Evento, limpar o formulário e retornar a tela home.
 
-![image-20241201111153833](./../../../../../AppData/Roaming/Typora/typora-user-images/image-20241201111153833.png)
+![image-20241201111153833](./img/image-20241201111153833.png)
 
 Ao salvar, os dados Imagem e Imagem url são preenchidos com o campo url_imagem.
 
